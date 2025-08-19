@@ -44,12 +44,12 @@ def show_task():
         
         for idx, task in enumerate(tasks, start=1):
             formatted_tasks.append({
-                "sr_no": idx,                               # ✅ serial number
-                "task_name": task.get("task_name", ""),     # ✅ frontend expects this
+                "sr_no": idx,                               
+                "task_name": task.get("task_name", ""),   
                 "task_desc": task.get("task_desc", ""),
                 "task_priority": task.get("task_priority", ""),
                 "task_status": task.get("task_status", ""),
-                "_id": str(task["_id"])                     # keep for edit/delete actions
+                "_id": str(task["_id"])               
             })
         
         return jsonify({"status": "success", "data": formatted_tasks})
