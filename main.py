@@ -2,12 +2,24 @@ from flask import Flask, request,render_template,redirect
 import pymongo
 from flask import jsonify
 from bson import ObjectId
+import os
+from dotenv import load_dotenv
 
-db= pymongo.MongoClient("mongodb://localhost:27017/")
+app = Flask(__name__)
+app.secret_key = 'your_secret_key_here'  # For session management
+
+# Load variables from .env file
+load_dotenv()
+
+# Get the URI from environment
+mongodb_uri = os.getenv("MONGODB_URI")
+
+# Connect
+db = pymongo.MongoClient(mongodb_uri)
+
 my_db = db["my_task"]
 create_task = my_db["create_task"]
 
-app = Flask(__name__)
 
 @app.route('/')
 def home():
