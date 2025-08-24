@@ -12,7 +12,7 @@ app.secret_key = 'your_secret_key_here'  # For session management
 load_dotenv()
 
 # Get the URI from environment
-mongodb_uri = os.getenv("MONGODB_URI")
+mongodb_uri = os.getenv("MONGODB_URL")
 
 # Connect
 db = pymongo.MongoClient(mongodb_uri)
